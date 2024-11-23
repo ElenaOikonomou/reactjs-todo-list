@@ -5,11 +5,10 @@ import TodoList from "./components/TodoList"
 function App() { 
   
 
-const [todos, setTodos] = useState([
-    'Go to the gym',
-    'eat your veggies',
-    'supermarket'
-  ])
+const [todos, setTodos] = useState([])
+const [todoValue, setTodoValue] = useState('')
+
+
 
 
     function handleAddTodos(newTodo) {      
@@ -24,11 +23,17 @@ const [todos, setTodos] = useState([
       setTodos(newTodoList)
     }
 
+    function handleEditTodo(index){
+      const valueTobeEdited =  todos[index]
+      setTodoValue(valueTobeEdited)
+      handleDeleteTodo(index)
+    }
+
 
   return (
     <>
-      <TodoInput  handleAddTodos={ handleAddTodos}/>
-      <TodoList  handleDeleteTodo={ handleDeleteTodo} todos={todos}/>
+      <TodoInput  handleAddTodos={ handleAddTodos} todoValue={ todoValue} setTodoValue={setTodoValue}/>
+      <TodoList  handleDeleteTodo={ handleDeleteTodo} todos={todos} setTodoValue={setTodoValue}  handleEditTodo={handleEditTodo}/>
     </>
   )
 }
