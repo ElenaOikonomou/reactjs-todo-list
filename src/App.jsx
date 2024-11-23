@@ -17,11 +17,18 @@ const [todos, setTodos] = useState([
         setTodos(newTodoList)      
     }
 
+    function handleDeleteTodo(index){
+      const newTodoList = todos.filter((todo, todoIndex) => {
+        return todoIndex !== index
+      })
+      setTodos(newTodoList)
+    }
+
 
   return (
     <>
       <TodoInput  handleAddTodos={ handleAddTodos}/>
-      <TodoList todos={todos}/>
+      <TodoList  handleDeleteTodo={ handleDeleteTodo} todos={todos}/>
     </>
   )
 }

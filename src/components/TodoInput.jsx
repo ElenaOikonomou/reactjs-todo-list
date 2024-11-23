@@ -11,6 +11,7 @@ export default function TodoInput({handleAddTodos}) {
         }}/>
         <button onClick={() => {
             handleAddTodos(todoValue)
+            setTodoValue('')
         }}>Add</button>
     </header>
   )
